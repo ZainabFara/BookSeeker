@@ -7,8 +7,7 @@ const Home = () => {
     <main>
       <Header/>
       <Outlet/>
-
-    </main>
+  </main>
   )
 }
 
