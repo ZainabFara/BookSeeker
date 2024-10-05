@@ -1,6 +1,7 @@
 .header-content {
     min-height: 75vh;
     background: linear-gradient(rgba(164, 132, 27, 0.158), rgba(132, 105, 14, 0.5)), url("../../assets/Bok.png") center/cover no-repeat;
+    flex-direction: column;
   }
   .header-title {
     font-size: 4.2rem;

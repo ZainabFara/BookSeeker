@@ -4,12 +4,14 @@
     --purple-color: #8d27ae;
     --pink-color: #d9176d;
     --brown-color: rgb(141, 71, 28);
+    --dark-brown-color: rgb(78, 34, 6);
     --light-brown-color:rgb(196, 137, 101);
     --green-color: rgb(79, 112, 92);
     --grey-color: #f3f3f3;
     --black-color: #010101;
     --white-color: #fff;
-    --light-black-color: #717171;
+    --light-grey-color: #717171;
+    --dark-grey-color: #78727226;
     --transition: all 300ms ease-in-out;
 }
 
