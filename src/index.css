@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
 
 :root{
     --purple-color: #8d27ae;
@@ -26,7 +27,7 @@ html{
 body{
     font-size:1.6rem;
     line-height: 1.7;
-    font-family: "Playwrite DE Grund", cursive;
+    font-family: 'Merriweather', serif;
     color: var(--black-color);
 }
 /* resets */
@@ -39,9 +40,9 @@ ul{
 button{
     outline: 0;
     border: none;
-    font-family: inherit;
+    font-family:'Merriweather', serif;
     background-color: transparent;
-    cursor: pointer
+    cursor: pointer;
 }
 img{
     width: 100%;
@@ -59,18 +60,19 @@ input{
 }
 
 /*Background colors*/
-.bg-brown{background-color: var(--brown-color);}
-.bg-purple{background-color: var(--pink-color);}
+.bg-brown{background-color: var(--pink-color);}
+.bg-purple{background-color: var(--purple-color);}
 .bg-white{background-color: var(--white-color);}
 
 /* Text*/
 .text-black{color: var(--black-color);}
 .text-white{color: var(--white-color);}
-.text-green{color: var(--green-color);}
+.text-green{color: var(--purble-color);}
 .text-light-black{color: var(--light-black-color);}
 .text-uppercase{text-transform: uppercase;}
 .text-center{text-align: center;}
 .text-capitalize{text-transform: capitalize;}
+.text-italic { font-style: italic; }
 
 /* font wrights*/
 .fw-3{font-weight: 300;}
@@ -103,6 +105,9 @@ input{
     flex-direction: column;
 }
 .flex-sb{
+    justify-content: space-between;
+}
+.flex-c{
     justify-content: center;
 }
 .grid{
