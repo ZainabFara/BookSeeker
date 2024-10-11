@@ -36,7 +36,7 @@ const Navbar = () => {
             <li className="nav-item">
               <Link
                 to="book"
-                className="nav-link text-uppercase text-white fs-22 fw-6 ls-1"
+                className={`nav-link text-uppercase fs-22 fw-6 ls-1 ${toggleMenu ? "text-white" : "text-black"}`}
               >
                 Home
               </Link>
@@ -44,8 +44,8 @@ const Navbar = () => {
             <li className="nav-item">
               <Link
                 to="about"
-                className="nav-link text-uppercase text-white fs-22 fw-6 ls-1"
-              >
+                className={`nav-link text-uppercase fs-22 fw-6 ls-1 ${toggleMenu ? "text-white" : "text-black"}`}
+                >
                 About
               </Link>
             </li>
