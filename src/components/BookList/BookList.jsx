@@ -7,22 +7,23 @@ import "./BookList.css";
 
 
 const BookList = () => {
-   const { books, loading, resultatTitle} = useGlobalContext ();
+  const { books, loading, resultTitle } = useGlobalContext();
+
 
    //Lägg till fallback-bild om ingen omslagsbild finns från API:et
-      const booksWisthCover = books.mao((singleBook) => {
-        const { id, volumeInfo } = singleBook;
-        const { title, authors, imageLinks } = volumeInfo;
-        
-
-        return {
-          id: id,
-          title: title,
-          author: authors ? authors.join (", "): "okänd författare",
-          cover_img: imageLinks && imageLinks.thumbnail ? imageLinks.thumbnail : coverImg
-
-        };
-      });
+   const booksWithCover = books.map((singleBook) => {
+    const { id, title, author, cover_img, page_count, published_date } = singleBook;
+  
+    return {
+      id,
+      title,
+      author,
+      cover_img: cover_img || coverImg, // Här använder vi coverImg som fallback-bild
+      page_count,
+      published_date
+    };
+  });  
+  
 
       if (loading) return <Loading/>;
 
@@ -34,7 +35,8 @@ const BookList = () => {
             </div>
             <div className='booklist-content grid'>
               {
-                booksWithCovers.slice(0, 30).map((item, index) => {
+                booksWithCover.slice(0, 30).map((item, index) => {
+
                   return (
                     <Book key={index} {...item} />
                   );
@@ -47,3 +49,6 @@ const BookList = () => {
     };
     
     export default BookList;
+
+
+

@@ -20,18 +20,18 @@ const AppProvider = ({ children }) => {
       if (data.items) {
         const newBooks = data.items.slice(0, 20).map((bookSingle) => {
           const { id, volumeInfo } = bookSingle;
-          const { authors, imageLinks, pageCount, publishedDate, title } =
-            volumeInfo;
-
+          const { authors, imageLinks, pageCount, publishedDate, title } = volumeInfo;
+        
           return {
-            id: id, // Google Books använder id
+            id,
             author: authors ? authors.join(", ") : "Okänd författare",
-            cover_id: imageLinks ? imageLinks.thumbnail : "", // Använd thumbnail från imageLinks
-            page_count: pageCount, // Antal sidor
-            published_date: publishedDate, // Publiceringsdatum
+            cover_img: imageLinks && imageLinks.thumbnail ? imageLinks.thumbnail : coverImg,
+            page_count: pageCount,
+            published_date: publishedDate,
             title: title,
           };
         });
+        
 
         setBooks(newBooks);
 
@@ -75,3 +75,5 @@ export const useGlobalContext = () => {
 };
 
 export { AppContext, AppProvider };
+
+

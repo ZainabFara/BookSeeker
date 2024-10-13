@@ -32,7 +32,7 @@ const Searchform = () => {
             <div className="search-form-elem flex flex-sb bg-white">
               <input
                 type="text"
-                className="fomr-control"
+                className="form-control"
                 placeholder="Söker..." ref ={searchText}
               />
               <button type="submit" className="flex flex-c" onClick={handleSubmit}>
