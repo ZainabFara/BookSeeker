@@ -1,29 +1,33 @@
-import React, {useRef, useEffect} from "react";
-import { FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../../context";
-import "./Searchform.css";
+// src/components/SearchForm/SearchForm.jsx
+import React, { useRef, useEffect } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../context';
+import './SearchForm.css';
 
-const Searchform = () => {
-  const {setSearchTerm,setResultTitle} = useGlobalContext();
+const SearchForm = () => {
+  const { setSearchTerm, setResultTitle } = useGlobalContext();
   const searchText = useRef('');
   const navigate = useNavigate();
 
-  useEffect(() => searchText.current.focus(),[]);
+  useEffect(() => {
+    searchText.current.focus();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let tempSearchTerm = searchText.current.value.trim();
+    const tempSearchTerm = searchText.current.value.trim();
 
-    if((tempSearchTerm.replace(/[^\w\s]/gi,"")).length === 0){
+    if (tempSearchTerm.replace(/[^\w\s]/gi, '').length === 0) {
       setSearchTerm("sökning");
-      setResultTitle("please Enter something ...");
+      setResultTitle("Please enter something...");
     } else {
-      setSearchTerm(searchText.current.value);
+      setSearchTerm(tempSearchTerm);
     }
 
-    navigate("/book");
+    navigate('/book');
   };
-    
+
   return (
     <div className="search-form">
       <div className="container">
@@ -33,9 +37,10 @@ const Searchform = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Söker..." ref ={searchText}
+                placeholder="Söker..."
+                ref={searchText}
               />
-              <button type="submit" className="flex flex-c" onClick={handleSubmit}>
+              <button type="submit" className="flex flex-c">
                 <FaSearch className="text-black" size={32} />
               </button>
             </div>
@@ -46,4 +51,6 @@ const Searchform = () => {
   );
 };
 
-export default Searchform;
+export default SearchForm;
+
+
