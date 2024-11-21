@@ -14,15 +14,18 @@ const SearchForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let tempSearchTerm = searchText.current.value.trim();
-    if((tempSearchTerm.replace(/[^\w\s]/gi,"")).length === 0){
-      setSearchTerm("Sökning...");
+    
+    if ((tempSearchTerm.replace(/[^\w\s]/gi, "")).length === 0) {
+      setSearchTerm("the lost world");
       setResultTitle("Please Enter Something ...");
     } else {
-      setSearchTerm(searchText.current.value);
+      console.log("New search term:", tempSearchTerm); // Loggar den nya termen
+      setSearchTerm(tempSearchTerm); // Uppdaterar söktermen
     }
-
-    navigate("/book");
+  
+   
   };
+  
 
   return (
     <div className="search-form">
