@@ -15,18 +15,15 @@ const SearchForm = () => {
     e.preventDefault();
     let tempSearchTerm = searchText.current.value.trim();
     
-    if ((tempSearchTerm.replace(/[^\w\s]/gi, "")).length === 0) {
-      setSearchTerm("the lost world");
-      setResultTitle("Please Enter Something ...");
+    if (tempSearchTerm === "") {
+        setSearchTerm(""); 
+        setResultTitle("Showing Popular Books...");
     } else {
-      console.log("New search term:", tempSearchTerm); // Loggar den nya termen
-      setSearchTerm(tempSearchTerm); // Uppdaterar söktermen
+        setSearchTerm(tempSearchTerm);
     }
-  
-   
-  };
-  
+};
 
+  
   return (
     <div className="search-form">
       <div className="container">
@@ -38,6 +35,7 @@ const SearchForm = () => {
                 className="form-control"
                 placeholder="Söker..."
                 ref={searchText}
+                writingsuggestions="true"
               />
               <button type="submit" className="flex flex-c">
                 <FaSearch className="text-black" size={32} />
