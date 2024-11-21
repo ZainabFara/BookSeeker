@@ -3,7 +3,7 @@ import { AppProvider } from './context.jsx';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
 import BookList from './components/BookList/BookList';
-import BookDetails from './components/BookDetails/BookDetails';
+import BookDetails from './components/SingleBook/SingleBook.jsx';
 import './App.css';
 
 function App() {
