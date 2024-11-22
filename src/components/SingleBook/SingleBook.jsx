@@ -8,10 +8,10 @@ import { FaArrowLeft } from "react-icons/fa";
 const URL = "https://openlibrary.org/works/";
 
 const SingleBook = () => {
-   const { id } = useParams(); 
-   const [loading, setLoading] = useState(false); 
-   const [book, setBook] = useState(null); 
-   const navigate = useNavigate(); 
+   const { id } = useParams();
+   const [loading, setLoading] = useState(false);
+   const [book, setBook] = useState(null);
+   const navigate = useNavigate();
 
    useEffect(() => {
       setLoading(true);
@@ -43,7 +43,7 @@ const SingleBook = () => {
       getSingleBook();
    }, [id]);
 
-   if (loading) return <Loading />; 
+   if (loading) return <Loading />;
 
    if (!book) {
       return (
@@ -77,13 +77,13 @@ const SingleBook = () => {
                      <span className='fw-6 fs-24'>Description:</span>
                      <p>{book?.description}</p>
                   </div>
-                  <div className='single-book-item'>
-                     <span className='fw-6'>Subject Places: </span>
-                     <span className='text-italic'>{book?.subject_places}</span>
-                  </div>
-                  <div className='single-book-item'>
-                     <span className='fw-6'>Subjects: </span>
-                     <span>{book?.subjects}</span>
+                  <div className='single-book-item subjects'>
+                     <span className='fw-6'>Subjects:</span>
+                     <div className='grid-container'>
+                        {book?.subjects?.split(',').map((subject, index) => (
+                           <span key={index}>{subject.trim()}</span>
+                        ))}
+                     </div>
                   </div>
                </div>
             </div>
@@ -93,5 +93,6 @@ const SingleBook = () => {
 };
 
 export default SingleBook;
+
 
 
