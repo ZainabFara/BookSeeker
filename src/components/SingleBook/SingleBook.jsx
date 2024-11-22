@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Loading from "../Loader/Loader";
 import coverImg from '../../assets/cover.jpg';
 import "./SingleBook.css";
 import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
 
 const URL = "https://openlibrary.org/works/";
 
 const SingleBook = () => {
-   const { id } = useParams();
-   const [loading, setLoading] = useState(false);
-   const [book, setBook] = useState(null);
-   const navigate = useNavigate();
+   const { id } = useParams(); 
+   const [loading, setLoading] = useState(false); 
+   const [book, setBook] = useState(null); 
+   const navigate = useNavigate(); 
 
    useEffect(() => {
       setLoading(true);
@@ -44,24 +43,49 @@ const SingleBook = () => {
       getSingleBook();
    }, [id]);
 
-   if (loading) return <Loading />;
-   if (!book) return <h2>No book found</h2>;
+   if (loading) return <Loading />; 
+
+   if (!book) {
+      return (
+         <div className="error-container">
+            <h2 className="error-message">No book details available.</h2>
+            <button className="flex flex-c back-btn" onClick={() => navigate("/book")}>
+               <FaArrowLeft size={23} />
+               <span className='fs-18 fw-6'>Go Back</span>
+            </button>
+         </div>
+      );
+   }
 
    return (
       <section className="single-book">
-         <button className="back-btn" onClick={() => navigate(-1)}>
-            <FaArrowLeft size={20} /> Back
-         </button>
-         <div className="book-details">
-            <div className="book-cover">
-               <img src={book.cover_img} alt={book.title} />
-            </div>
-            <div className="book-info">
-               <h2>{book.title}</h2>
-               <p><strong>Description:</strong> {book.description}</p>
-               <p><strong>Subject Places:</strong> {book.subject_places}</p>
-               <p><strong>Subject Times:</strong> {book.subject_times}</p>
-               <p><strong>Subjects:</strong> {book.subjects}</p>
+         <div className="container">
+            <button type='button' className='flex flex-c back-btn' onClick={() => navigate("/book")}>
+               <FaArrowLeft size={23} />
+               <span className='fs-18 fw-6'>Go Back</span>
+            </button>
+
+            <div className='single-book-content grid'>
+               <div className='single-book-img'>
+                  <img src={book?.cover_img} alt="cover img" />
+               </div>
+               <div className='single-book-info'>
+                  <div className='single-book-item title'>
+                     <span className='fw-6 fs-24'>{book?.title}</span>
+                  </div>
+                  <div className='single-book-item description'>
+                     <span className='fw-6 fs-24'>Description:</span>
+                     <p>{book?.description}</p>
+                  </div>
+                  <div className='single-book-item'>
+                     <span className='fw-6'>Subject Places: </span>
+                     <span className='text-italic'>{book?.subject_places}</span>
+                  </div>
+                  <div className='single-book-item'>
+                     <span className='fw-6'>Subjects: </span>
+                     <span>{book?.subjects}</span>
+                  </div>
+               </div>
             </div>
          </div>
       </section>
@@ -69,4 +93,5 @@ const SingleBook = () => {
 };
 
 export default SingleBook;
+
 
